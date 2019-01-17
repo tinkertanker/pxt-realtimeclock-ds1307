@@ -9,7 +9,7 @@
  */
 //% weight=0 color=#f3555a icon="\uf017" block="RTC_1307"
 namespace RTC_DS1307 {
-    export enum TimeWriteType {
+    export enum TimeType {
         //% block="second" enumval=0
         SECOND,
         //% block="minute" enumval=1
@@ -24,22 +24,6 @@ namespace RTC_DS1307 {
         YEAR
     }
 
-    export enum TimeReadType {
-        //% block="second" enumval=0
-        SECOND,
-        //% block="minute" enumval=1
-        MINUTE,
-        //% block="hour" enumval=2
-        HOUR,
-        //% block="day" enumval=3
-        DAY,
-        //% block="month" enumval=4
-        MONTH,
-        //% block="year" enumval=5
-        YEAR,
-        //% block="weekday" enumval=6
-        WEEKDAY
-    }
 
     let DS1307_I2C_ADDR = 0x68;
     let DS1307_REG_SECOND = 0
@@ -89,7 +73,7 @@ namespace RTC_DS1307 {
      */
     //% blockId="DS1307_SET_TIME" 
     //% block="set %datatype |%data"
-    export function setTime(datatype: TimeWriteType, data: number): void {
+    export function setTime(datatype: TimeType, data: number): void {
         switch (datatype) {
             case 0:
                 setReg(DS1307_REG_SECOND, DecToHex(data % 60))
@@ -117,9 +101,57 @@ namespace RTC_DS1307 {
 
 
     /**
-     * gte weekday
+     * get time
      */
-    function getWeekday(): number {
+    //% blockId="DS1307_GET_TIME" 
+    //% block="%data"
+    export function getTime(data: TimeType): number {
+        switch (data) {
+            case 0:
+                return HexToDec(getReg(DS1307_REG_SECOND))
+                break
+            case 1:
+                return HexToDec(getReg(DS1307_REG_MINUTE))
+                break
+            case 2:
+                return HexToDec(getReg(DS1307_REG_HOUR))
+                break
+            case 3:
+                return HexToDec(getReg(DS1307_REG_DAY))
+                break
+            case 4:
+                return HexToDec(getReg(DS1307_REG_MONTH))
+                break
+            case 5:
+                return (HexToDec(getReg(DS1307_REG_YEAR)) + 2000)
+                break
+            default:
+                return 0
+
+        }
+    }
+
+    
+
+    /**
+     * get time
+     */
+    //% blockId="DS1307_GET_TIME" 
+    //% block="%data"
+
+    /**
+     * get  weekday
+     * 0 means Sunday
+     * 1 means Monday
+     * 2 means Tuesday
+     * 3 means Wednesday
+     * 4 means Thursday
+     * 5 means Friday
+     * 6 means Saturday
+     */
+    //% blockId="DS1307_GET_WEEKDAY" 
+    //% block="weekday"
+    export function getWeekday(): number {
         // (d+2*m+3*(m+1)/5+y+y/4-y/100+y/400) mod 7
         let d = HexToDec(getReg(DS1307_REG_DAY))
         let m = HexToDec(getReg(DS1307_REG_MONTH))
@@ -141,39 +173,9 @@ namespace RTC_DS1307 {
     }
 
 
-    /**
-     * get time
-     */
-    //% blockId="DS1307_GET_TIME" 
-    //% block="%data"
-    export function getTime(data: TimeReadType): number {
-        switch (data) {
-            case 0:
-                return HexToDec(getReg(DS1307_REG_SECOND))
-                break
-            case 1:
-                return HexToDec(getReg(DS1307_REG_MINUTE))
-                break
-            case 2:
-                return HexToDec(getReg(DS1307_REG_HOUR))
-                break
-            case 3:
-                return HexToDec(getReg(DS1307_REG_DAY))
-                break
-            case 4:
-                return HexToDec(getReg(DS1307_REG_MONTH))
-                break
-            case 5:
-                return (HexToDec(getReg(DS1307_REG_YEAR)) + 2000)
-                break
-            case 6:
-                return getWeekday()
-                break
-            default:
-                return 0
+    
 
-        }
-    }
+
 
 
     /**
