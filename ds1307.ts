@@ -7,7 +7,7 @@
 /**
  * RTC_DS1307 block
  */
-//% weight=0 color=#f3555a icon="\uf017" block="RTC_1307"
+//% weight=0 color=#f3555a icon="\uf017" block="RTC1307"
 namespace RTC_DS1307 {
     export enum TimeType {
         //% block="second" enumval=0
