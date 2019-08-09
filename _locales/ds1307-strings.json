@@ -1,0 +1,14 @@
+{
+  "RTC_DS1307.DateTime|block": "set year %year|    month %month|      day %day|     hour %hour|   minute %minute|   second %second",
+  "RTC_DS1307.TimeType.DAY|block": "day",
+  "RTC_DS1307.TimeType.HOUR|block": "hour",
+  "RTC_DS1307.TimeType.MINUTE|block": "minute",
+  "RTC_DS1307.TimeType.MONTH|block": "month",
+  "RTC_DS1307.TimeType.SECOND|block": "second",
+  "RTC_DS1307.TimeType.YEAR|block": "year",
+  "RTC_DS1307.getTime|block": "%data",
+  "RTC_DS1307.getWeekday|block": "weekday",
+  "RTC_DS1307.setTime|block": "set %datatype |%data",
+  "RTC_DS1307|block": "RTC1307",
+  "{id:category}RTC_DS1307": "RTC_DS1307"
+}
