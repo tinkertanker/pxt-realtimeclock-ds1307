@@ -1,0 +1,13 @@
+{
+  "RTC_DS1307": "Use this file to define custom functions and blocks.\r\nRead more at https://makecode.microbit.org/blocks/custom\r\n\r\nRTC_DS1307 block",
+  "RTC_DS1307.DateTime": "set Date and Time",
+  "RTC_DS1307.DateTime|param|day": "is the Day will be set, eg: 17",
+  "RTC_DS1307.DateTime|param|hour": "is the Hour will be set, eg: 12",
+  "RTC_DS1307.DateTime|param|minute": "is the Minute will be set, eg: 31",
+  "RTC_DS1307.DateTime|param|month": "is the Month will be set, eg: 1",
+  "RTC_DS1307.DateTime|param|second": "is the Second will be set, eg: 19",
+  "RTC_DS1307.DateTime|param|year": "is the Year will be set, eg: 2019",
+  "RTC_DS1307.getTime": "get time",
+  "RTC_DS1307.getWeekday": "get time\r\n\r\nget  weekday\r\n0 means Sunday\r\n1 means Monday\r\n2 means Tuesday\r\n3 means Wednesday\r\n4 means Thursday\r\n5 means Friday\r\n6 means Saturday",
+  "RTC_DS1307.setTime": "set time"
+}
